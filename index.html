@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="1000000000000">
-  <meta http-equiv="content-language" content="en-gb">
-  <meta name="theme-color" content="#1e1e1e">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
-  <title>HeyJKSN Photography</title>
-  <meta property="og:title" content="HeyJKSN Photography">
-  <meta property="og:description" content="See all the photos taken by Jackson Davis (@HeyJKSN)">
-  <meta property="og:url" content="https://photos.heyjksn.com">
-  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1000000000000">
+    <meta http-equiv="content-language" content="en-gb">
+    <meta name="theme-color" content="#1e1e1e">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
+    <title>HeyJKSN Photography</title>
+    <meta property="og:title" content="HeyJKSN Photography">
+    <meta property="og:description" content="See all the photos taken by Jackson Davis (@HeyJKSN)">
+    <meta property="og:url" content="https://photos.heyjksn.com">
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
     <style>
         body {
             font-family: Verdana, sans-serif;
@@ -20,15 +21,10 @@
             background-color: #f4f4f4;
         }
 
-        header {
+        header,
+        nav {
             background-color: #333;
             color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #444;
             padding: 10px;
             text-align: center;
         }
@@ -38,23 +34,44 @@
             text-decoration: none;
             padding: 10px;
             margin: 0 10px;
+            display: inline-block;
         }
+		  div a {
+            color: #0073cf;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+		
 
         section {
             padding: 20px;
+            text-align: center;
+        }
+
+        div {
+            display: inline-block;
+            margin: 0 10px;
         }
 
         img {
-            max-width: 50%;
-            height: auto;
+            max-width: 720px;
             display: block;
             margin: 0 auto;
             cursor: pointer;
         }
-        
-p {
-text-align: center;
-}
+
+        p {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
     </style>
 </head>
 
@@ -72,14 +89,32 @@ text-align: center;
     </nav>
 
     <section>
-        <!-- Replace the following image URLs with your actual image URLs -->
-        <p>This image is a placeholder</p>
-        <img src="trains/DSCN0263.JPG" title="A HCMT at Oakleigh Station">
-        <p>If the image doesn't load, it's because I'm still figuring out how GitHub works</p>
+	<center><h1>Latest Additions</h1></center>
+        <div>
+            <img src="https://photos.heyjksn.com/trains/DSCN0338.JPG" title="A tram in the city">
+            <a href="trains.html">Trains</a>
+        </div>
+
+        <div>
+            <img src="https://photos.heyjksn.com/trams/DSCN0302.JPG" title="A tram in the city">
+            <a href="trams.html">Trams</a>
+        </div>
+
+        <div>
+            <img src="https://photos.heyjksn.com/trains/DSCN0263.JPG" title="A tram in the city">
+            <a href="buses.html">Buses</a>
+        </div>
+
+        <div>
+            <img src="https://photos.heyjksn.com/trains/DSCN0263.JPG" title="A tram in the city">
+            <a href="miscellaneous.html">Miscellaneous</a>
+        </div>
     </section>
 
+    <p>If the image doesn't load, it's because I'm still figuring out how GitHub works</p>
+
     <footer>
-        <p>Copyright 2023 - <a href="https://heyjksn.com">HeyJKSN</a></p>
+        <p>Copyright 2023 - <a style="color: white" href="https://heyjksn.com">HeyJKSN</a></p>
     </footer>
 </body>
 

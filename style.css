@@ -1,19 +1,14 @@
-body {
+        body {
             font-family: Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
-        header {
+        header,
+        nav {
             background-color: #333;
             color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #444;
             padding: 10px;
             text-align: center;
         }
@@ -23,20 +18,41 @@ body {
             text-decoration: none;
             padding: 10px;
             margin: 0 10px;
+            display: inline-block;
         }
+		  div a {
+            color: #0073cf;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+		
 
         section {
             padding: 20px;
+            text-align: center;
+        }
+
+        div {
+            display: inline-block;
+            margin: 0 10px;
         }
 
         img {
-            max-width: 50%;
-            height: auto;
+            max-width: 720px;
             display: block;
             margin: 0 auto;
             cursor: pointer;
         }
-        
-p {
-text-align: center;
-}
+
+        p {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }

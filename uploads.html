@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1000000000000">
+    <meta http-equiv="content-language" content="en-gb">
+    <meta name="theme-color" content="#1e1e1e">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
+    <title>HeyJKSN Photography</title>
+    <meta property="og:title" content="HeyJKSN Photography">
+    <meta property="og:description" content="See all the photos taken by Jackson Davis (@HeyJKSN)">
+    <meta property="og:url" content="https://photos.heyjksn.com">
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1719635439882252288/NInc0Nqp_400x400.jpg">
+    <link rel="stylesheet" href="https://photos.heyjksn.com/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow" rel="stylesheet">
+    <style>
+        body, h1, a, li {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HeyJKSN Photography</h1>
+    </header>
+
+    <nav>
+        <a href="/trains">Trains</a>
+        <a href="/trams">Trams</a>
+        <a href="/buses">Buses</a>
+        <a href="/miscellaneous">Miscellaneous</a>
+        <a href="/about">About</a>
+    </nav>
+    <ul id="results"></ul>
+
+    <script>
+        async function countJPGFiles(repo, path) {
+            const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            let jpgCount = 0;
+            let latestTimestamp = null;
+
+            for (const item of data) {
+                if (item.type === 'file' && item.name.toLowerCase().endsWith('.jpg')) {
+                    jpgCount++;
+                    const commitUrl = `https://api.github.com/repos/${repo}/commits?path=${path}/${item.name}`;
+                    const commitResponse = await fetch(commitUrl);
+                    const commitData = await commitResponse.json();
+
+                    if (commitData.length > 0) {
+                        const commitTimestamp = new Date(commitData[0].commit.author.date);
+                        if (!latestTimestamp || commitTimestamp > latestTimestamp) {
+                            latestTimestamp = commitTimestamp;
+                        }
+                    }
+                }
+            }
+
+            return { jpgCount, latestTimestamp };
+        }
+
+        async function fetchAndDisplayCounts() {
+            const repositories = [
+                { name: 'trams', path: 'trams' },
+                { name: 'trains', path: 'trains' },
+                { name: 'buses', path: 'buses' },
+                { name: 'misc', path: 'misc' }
+            ];
+
+            const resultsElement = document.getElementById('results');
+            resultsElement.innerHTML = '';
+
+            for (const repo of repositories) {
+                const { jpgCount, latestTimestamp } = await countJPGFiles('HeyJKSN/Photos.HeyJKSN.com', repo.path);
+                const listItem = document.createElement('li');
+                listItem.textContent = `${repo.name}: ${jpgCount} JPG files | Last uploaded: ${formatTimestamp(latestTimestamp)}`;
+                resultsElement.appendChild(listItem);
+            }
+        }
+
+        function formatTimestamp(timestamp) {
+            if (!timestamp) return 'N/A';
+
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            return timestamp.toLocaleString('en-US', options);
+        }
+
+        fetchAndDisplayCounts();
+    </script>
+</body>
+
+</html>
